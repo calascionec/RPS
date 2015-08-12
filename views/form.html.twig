@@ -1,8 +1,52 @@
 <html>
     <head>
-        <title></title>
+        <title>Pick a Player</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+
+        <style media="screen">
+            #create_player{
+
+                float: left;
+                border: 1px solid black;
+            }
+
+            #usernames {
+                float: right;
+                border: 1px solid black;
+
+            }
+        </style>
     </head>
     <body>
-        Form page
+        <div class="container-fluid">
+            <h1>Choose a player or create your own!</h1>
+
+            <div id="usernames" class="col-xs-4 col-xs-offset-1">
+                <h1>usernames</h1>
+            </div>
+
+            <div id="create_player" class="col-xs-7">
+                <form name="ad" action="/show_all" method="post">
+                    <div class="form-group">
+                        <label for="name">User Name:</label>
+                        <input type="text" class="form-control" id = "name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" class="form-control" id = "age" name="age">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Image URL: </label>
+                        <input type="text" class="form-control" id = "image" name="image">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id = "email" name="email">
+                    </div>
+                        <button name="submit">Submit</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>
