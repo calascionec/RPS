@@ -8,7 +8,7 @@
         private $email;
 
 
-        function __constructor($name, $age, $image, $email)
+        function __construct($name, $age, $image, $email)
         {
             $this->name = $name;
             $this->age = $age;
