@@ -16,6 +16,11 @@
                 border: 1px solid black;
 
             }
+
+            .players img {
+                width: 50px;
+                height: 50px;
+            }
         </style>
     </head>
     <body>
@@ -23,13 +28,28 @@
             <h1>Choose a player or create your own!</h1>
 
             <div id="usernames" class="col-xs-4 col-xs-offset-1">
-                <h1>usernames</h1>
+                <h1>Players</h1>
+                {% if players is empty %}
+                <h2>No Players</h2>
+                {% endif %}
+                <ul>
+
+
+                {% for player in players %}
+
+                <li><div class = "player"><img src = {{ player.getImage }}>{{ player.getName}}</div></li>
+                {% endfor %}
+                </ul>
+                <form name="del" action="/delete_all_players" method="get">
+                <button name="submit">delete all players</button>
+            </form>
+            <a href="/delete_all_players">Delete all the players</a>
             </div>
 
             <div id="create_player" class="col-xs-7">
-                <form name="ad" action="/show_all" method="post">
+                <form name="ad" action="/create_player" method="post">
                     <div class="form-group">
-                        <label for="name">User Name:</label>
+                        <label for="name">Player Name:</label>
                         <input type="text" class="form-control" id = "name" name="name">
                     </div>
                     <div class="form-group">
@@ -45,6 +65,7 @@
                         <input type="email" class="form-control" id = "email" name="email">
                     </div>
                         <button name="submit">Submit</button>
+
                 </form>
             </div>
         </div>
