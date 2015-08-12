@@ -45,17 +45,19 @@
                 {% if players is empty %}
                 <h2>No Players</h2>
                 {% endif %}
-                <form>
+                <form name="enterGame" action="/game" method="get">
                 {% for player in players %}
                     <div class="form-group player">
-                    <input type="checkbox" name={{player.getName}} value= {{player.getName}}><img src={{player.getImage}}>{{player.getName}}<br>
+                    <input type="checkbox" name='playCheck'[] value = {{player.getName}}><img src={{player.getImage}}>{{player.getName}}<br>
                     </div>
 
                 {% endfor %}
+                <button name="submit">Players Fight!</button>
                 </form>
-                <form name="del" action="/delete_all_players" method="get">
-                <button name="submit">delete all players</button>
-            </form>
+
+
+
+            <br>
             <a href="/delete_all_players">Delete all the players</a>
             </div>
 
