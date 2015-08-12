@@ -2,6 +2,7 @@
     <head>
         <title>Pick a Player</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
 
         <style media="screen">
@@ -22,6 +23,18 @@
                 height: 50px;
             }
         </style>
+
+                <script>
+                            $(function(){
+                            var max = 2;
+                            var checkboxes = $('input[type="checkbox"]');
+
+                            checkboxes.change(function(){
+                                var current = checkboxes.filter(':checked').length;
+                                checkboxes.filter(':not(:checked)').prop('disabled', current >= max);
+                            });
+                            });
+                </script>
     </head>
     <body>
         <div class="container-fluid">
@@ -32,14 +45,14 @@
                 {% if players is empty %}
                 <h2>No Players</h2>
                 {% endif %}
-                <ul>
-
-
+                <form>
                 {% for player in players %}
+                    <div class="form-group player">
+                    <input type="checkbox" name={{player.getName}} value= {{player.getName}}><img src={{player.getImage}}>{{player.getName}}<br>
+                    </div>
 
-                <li><div class = "player"><img src = {{ player.getImage }}>{{ player.getName}}</div></li>
                 {% endfor %}
-                </ul>
+                </form>
                 <form name="del" action="/delete_all_players" method="get">
                 <button name="submit">delete all players</button>
             </form>
